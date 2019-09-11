@@ -11,6 +11,7 @@ after_success:
   - docker-credential-gcr configure-docker
   - echo ${keyjson} > aaa.json
   - gcloud auth activate-service-account --key-file aaa.json
+  - cat aaa.json
 #  - openssl enc -aes-256-cbc -d -in encryptfile.json -out aaa -k ${password}
 #  - gcloud auth activate-service-account --key-file aaa
   - docker build -t image .
