@@ -22,8 +22,8 @@ after_success:
   - gcloud container clusters create app1
   - gcloud container clusters get-credentials
   - kubectl delete service app1
-  - kubectl create deployment hello-server --image=gcr.io/project2-251819/github.com/image@sha256:c8093b2b7dd3f72e50f6967d4f17677dcd1ba79c81d0ed3be0736092dd00acad
-  - kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
+  - kubectl create deployment app1 --image=gcr.io/project2-251819/github.com/image@sha256:c8093b2b7dd3f72e50f6967d4f17677dcd1ba79c81d0ed3be0736092dd00acad
+  - kubectl expose deployment app1 --type LoadBalancer --port 80 --target-port 8080
 
 before_install:
 - chmod +x mvnw
