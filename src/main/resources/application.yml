@@ -6,14 +6,17 @@ spring:
     name: recipease
   
   datasource:
-    dirverClassName: org.postgresql.Driver
+    driverClassName: org.postgresql.Driver
     initilization-mode: never
-    password: ${JDBC_PASSWORD}
-    username: ${JDBC_USERNAME}
-    url: jdbc:postgresql://${JDBC_URL}:5432/${DATABASE_NAME}
-  jpa:    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: true
-    hibernate:      ddl-auto: create
-    properties:      hibernate:
-        default_schema: ${JDBC_SCHEMA}
+    password: 123
+    username: abc
+    url: jdbc:postgresql://34.70.51.191:5432/recipease
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: recipease
     show-sql: false
