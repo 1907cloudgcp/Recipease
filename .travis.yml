@@ -19,9 +19,13 @@ after_success:
   - y | gcloud app deploy --project project2-251819
   - gcloud config set compute/zone us-central1-a
   - # comment out later
+  #This is just commenting on the current travis.yaml to diagnose the error, once we have succesful deployment, we proceed.
+  #everything below this comment fails when building on travis. Probable issue is that since we failed to create the cluster for app1, the rest
+  #tumbles down. Will write the travis error under each line. 
   - gcloud container clusters create app1
+  #ERROR: (gcloud.container.clusters.create) ResponseError: code=403, message=Required "container.clusters.create" permission(s) for "projects/travis-ci-prod-2". See https://cloud.google.com/kubernetes-engine/docs/troubleshooting#gke_service_account_deleted for more info.
   - gcloud container clusters get-credentials
-  - kubectl delete service app1
+  - kubectl delete service app1  #Why does this kubectl deletes a service that doesnt exist? 
   - kubectl create deployment app1 --image=gcr.io/project2-251819/github.com/image@sha256:c8093b2b7dd3f72e50f6967d4f17677dcd1ba79c81d0ed3be0736092dd00acad
   - kubectl expose deployment app1 --type LoadBalancer --port 80 --target-port 8080
 
