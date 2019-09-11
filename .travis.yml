@@ -28,6 +28,7 @@ after_success:
 before_install:
 - chmod +x mvnw
 - sudo apt-get install google-cloud-sdk
+- ls /home/travis
 - source /home/travis/google-cloud-sdk/path.bash.inc
 - sudo gcloud components install kubectl
 - openssl aes-256-cbc -K ${encrypted_58f7fa4b7881_key} -iv ${encrypted_58f7fa4b7881_iv}
