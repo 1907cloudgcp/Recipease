@@ -16,7 +16,7 @@ after_success:
   - docker build -t image .
   - docker tag image gcr.io/project2-251819/github.com/image
   - gcloud docker -- push gcr.io/project2-251819/github.com/image
-  - gcloud app deploy --project project2-251819
+  - gcloud app deploy --project project2-251819 -y
 
 before_install:
 - chmod +x mvnw
