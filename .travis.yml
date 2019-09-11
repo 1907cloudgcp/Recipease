@@ -10,10 +10,9 @@ after_success:
 #  - docker build -t gcr.io/project2-251819/github.com/1907cloudgcp/recipeasev1:0.0.1 .
   - docker-credential-gcr configure-docker
   - echo ${keyjson} > aaa.json
-  - gcloud auth activate-service-account --key-file aaa.json
-  - cat aaa.json
-#  - openssl enc -aes-256-cbc -d -in encryptfile.json -out aaa -k ${password}
-#  - gcloud auth activate-service-account --key-file aaa
+  - openssl enc -d -aes-256-cbc -in encrypted.data -out e.json -k ${password}
+  - gcloud auth activate-service-account --key-file e.json
+#  - cat aaa.json
   - docker build -t image .
   - docker tag image gcr.io/project2-251819/github.com/image
   - gcloud docker -- push gcr.io/project2-251819/github.com/image
