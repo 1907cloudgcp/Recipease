@@ -9,7 +9,8 @@ addons:
 after_success:
 #  - docker build -t gcr.io/project2-251819/github.com/1907cloudgcp/recipeasev1:0.0.1 .
   - docker-credential-gcr configure-docker
-  - openssl enc -d -aes-256-cbc -in encrypted.data -out e.json -k password
+  - gsutil cp gs://sub_demi_bog_entity_image_1/jsonkey.json e.json
+#  - openssl enc -d -aes-256-cbc -in encrypted.data -out e.json -k password
   - gcloud auth activate-service-account --key-file e.json
 #  - cat aaa.json
   - docker build -t image .
