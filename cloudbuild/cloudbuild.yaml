@@ -5,7 +5,7 @@ steps:
   - 'JDBC_PASSWORD'
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
-  args: ['-c', 'docker build -t gcr.io/$PROJECT_ID/go-fund-you:testlatest -f ./devops/Dockerfile --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD .']
+  args: ['-c', 'docker build -t gcr.io/project2-251819/recipease -f ./Dockerfile --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD .']
   secretEnv: ['JDBC_PASSWORD']
  
 #- name: "gcr.io/cloud-builders/gcloud"
