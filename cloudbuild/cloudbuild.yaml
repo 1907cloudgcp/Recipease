@@ -21,7 +21,7 @@ timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
 
 secrets:
-- kmsKeyName: 'projects/project-2-251819/locations/global/keyRings/database/cryptoKeys/key'
+- kmsKeyName: 'projects/project2-251819/locations/global/keyRings/database/cryptoKeys/key'
   secretEnv:
     JDBC_PASSWORD: 'CiQAfvjyw1RzjLHoeUW93k/8iJV9iYnZXD4GqsIYvc2Mc8js1rgSIQBN1LoZmYCPQIAbKc1JEgWO/F09Gwl4lFcm+3SoD9bsmQ=='
     
