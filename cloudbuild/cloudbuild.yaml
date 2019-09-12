@@ -3,10 +3,6 @@ steps:
   entrypoint: 'mvn'
   args: ['install']
   secretEnv:
-  - 'DATABASE_NAME'
-  - 'JDBC_SCHEMA'
-  - 'JDBC_URL'
-  - 'JDBC_USERNAME'
   - 'JDBC_PASSWORD'
 # Build image
 - name: 'gcr.io/cloud-builders/docker'
