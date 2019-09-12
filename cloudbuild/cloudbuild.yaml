@@ -1,47 +1,22 @@
 steps:
-- name: 'maven:3.6.1-jdk-8-slim'
-  entrypoint: 'mvn'
+- name: 'gcr.io/cloud-builders/mvn'
   args: ['install']
-  secretEnv:
-  - 'JDBC_PASSWORD'
-# Build image
+  env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=abc','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
+  args: ['echo','${JDBC_PASSWORD}']
 - name: 'gcr.io/cloud-builders/docker'
-  entrypoint: 'bash'
-  #args: ['-c', 'docker build -t gcr.io/project2-251819/github.com -f ./Dockerfile --build-arg JDBC_PASSWORD=abc .']
-  #secretEnv: ['JDBC_PASSWORD']
+  env: ['username=abc','password=123']
   env:
   - 'JDBC_PASSWORD=abc'
-  args: ['-c','--build-arg JDBC_PASSWORD=abc echo $JDBC_PASSWORD']
-# Push image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/project2-251819/github.com']
-# Deploy into App Engine
-#- name: "gcr.io/cloud-builders/gcloud"
-#args: ['app', 'deploy', './devops/app.yaml', '--image-url=gcr.io/project2-251819/github.com']
-secrets:
-- kmsKeyName: 'projects/project2-251819/locations/global/keyRings/db_keyring/cryptoKeys/db_key'
-  secretEnv:
-    JDBC_PASSWORD: 'CiQAXCcwxw3qiP4zT1mUijCstLhFOBwdUqDfdz/noIAtnDjzJM4SLAAQAZBNTsvr5t1fWUjarfunNipk42ylwR5uKjX24Xnd8+WElzG28BY7N8Dw'
-
-#steps:
-#- name: 'gcr.io/cloud-builders/mvn'
-  #args: ['install']
-  #env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=abc','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
- # args: ['echo','${JDBC_PASSWORD}']
-#- name: 'gcr.io/cloud-builders/docker'
-  #env: ['username=abc','password=123']
-  #env:
-  #- 'JDBC_PASSWORD=abc'
- # args: ['build', '--tag=gcr.io/project2-251819/recipease', '.']
-#- name: "gcr.io/cloud-builders/gcloud"
- # args: ["app", "deploy"]
-#- name: 'gcr.io/cloud-builders/gke-deploy:stable'
-  #args:
-  #- 'run'
-  #- '--image=gcr.io/project2-251819/recipease'
-  #- '--location=us-central1-c'
- # - '--cluster=hello-java-cluster'
-#  - '--expose=8080'
+  args: ['build', '--tag=gcr.io/project2-251819/recipease --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD', '.']
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+- name: 'gcr.io/cloud-builders/gke-deploy:stable'
+  args:
+  - 'run'
+  - '--image=gcr.io/project2-251819/recipease'
+  - '--location=us-central1-c'
+  - '--cluster=hello-java-cluster'
+  - '--expose=8080'
 timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
 options:
