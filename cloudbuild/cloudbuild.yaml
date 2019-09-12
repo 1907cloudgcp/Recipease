@@ -4,7 +4,13 @@ steps:
   env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=123','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--tag=gcr.io/project2-251819/recipease', '.']
-- name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy"]
+#- name: "gcr.io/cloud-builders/gcloud"
+ # args: ["app", "deploy"]
+- name: 'gcr.io/cloud-builders/gke-deploy:stable'
+  args:
+  - 'run'
+  - '--image=gcr.io/project2-251819/recipease'
+  - '--location=us-central1-c'
+  - '--cluster=hello-java-cluster'
 timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
