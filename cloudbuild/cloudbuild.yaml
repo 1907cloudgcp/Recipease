@@ -19,3 +19,4 @@ timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
 options:
   env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=123','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
+  
