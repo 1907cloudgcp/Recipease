@@ -5,7 +5,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   #env: ['username=abc','password=123']
   env:
-  - 'JDBC_PASSWORD= abc'
+  - 'JDBC_PASSWORD=abc'
   args: ['build', '--tag=gcr.io/project2-251819/recipease', '.']
 #- name: "gcr.io/cloud-builders/gcloud"
  # args: ["app", "deploy"]
