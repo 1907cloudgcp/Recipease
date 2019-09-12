@@ -3,7 +3,8 @@ steps:
   args: ['install']
   env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=123','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
 - name: 'gcr.io/cloud-builders/docker'
-  env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=123','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
+  env:
+  - 'JDBC_PASSWORD=123'
   #env: ['username=abc','password=123']
   args: ['build', '--tag=gcr.io/project2-251819/recipease', '.']
 #- name: "gcr.io/cloud-builders/gcloud"
