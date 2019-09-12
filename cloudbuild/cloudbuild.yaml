@@ -19,8 +19,7 @@ steps:
   - '--expose=8080'
 timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
-options:
-  env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=abc','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
+
 secrets:
 - kmsKeyName: 'projects/project-2-251819/locations/global/keyRings/gfy-keyring/cryptoKeys/gofundyoukey'
   secretEnv:
