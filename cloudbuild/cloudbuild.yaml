@@ -18,7 +18,7 @@ steps:
 secrets:
 - kmsKeyName: 'projects/project2-251819/locations/global/keyRings/db_keyring/cryptoKeys/db_key'
   secretEnv:
-    JDBC_PASSWORD: 'CiQAfvjywwFDneaLykIiqgKBkjJDVBM4km+t96A8v0btrO2OUSwSLABN1LoZkWzwfVzGOXdQJ7/RIjw7RE+fbjl2Yx+cR48YInS1GXJL2kC75wWI'
+    JDBC_PASSWORD: 'CiQAXCcwxw3qiP4zT1mUijCstLhFOBwdUqDfdz/noIAtnDjzJM4SLAAQAZBNTsvr5t1fWUjarfunNipk42ylwR5uKjX24Xnd8+WElzG28BY7N8Dw'
 
 #steps:
 #- name: 'gcr.io/cloud-builders/mvn'
