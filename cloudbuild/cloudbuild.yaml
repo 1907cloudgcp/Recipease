@@ -8,10 +8,11 @@ steps:
  # args: ["app", "deploy"]
 - name: 'gcr.io/cloud-builders/gke-deploy:stable'
   args:
-  - 'set'
-  - '--image=gcr.io/project2-251819/recipease'
-  - '--location=us-central1-c'
-  - '--cluster=hello-java-cluster'
+  - '--help'
+  #- 'set'
+  #- '--image=gcr.io/project2-251819/recipease'
+  #- '--location=us-central1-c'
+  #- '--cluster=hello-java-cluster'
 #  - '--expose=8080'
 timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
