@@ -9,6 +9,8 @@ steps:
   entrypoint: 'bash'
   #args: ['-c', 'docker build -t gcr.io/project2-251819/github.com -f ./Dockerfile --build-arg JDBC_PASSWORD=abc .']
   #secretEnv: ['JDBC_PASSWORD']
+  env:
+  - 'JDBC_PASSWORD=abc'
   args: ['-c','--build-arg JDBC_PASSWORD=abc echo $JDBC_PASSWORD']
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
