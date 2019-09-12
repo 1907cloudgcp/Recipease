@@ -15,7 +15,7 @@ steps:
   secretEnv: ['DATABASE_NAME', 'JDBC_SCHEMA', 'JDBC_URL', 'JDBC_USERNAME', 'JDBC_PASSWORD']
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
- args: ['push', 'gcr.io/project2-251819/github.com']
+  args: ['push', 'gcr.io/project2-251819/github.com']
 # Deploy into App Engine
 #- name: "gcr.io/cloud-builders/gcloud"
 #args: ['app', 'deploy', './devops/app.yaml', '--image-url=gcr.io/project2-251819/github.com']
