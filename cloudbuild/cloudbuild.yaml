@@ -7,7 +7,7 @@ steps:
   env: ['username=abc','password=123']
   env:
   - 'JDBC_PASSWORD=abc'
-  args: ['build', '--tag=gcr.io/project2-251819/recipease --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD', '.']
+  args: ['build', '--tag=gcr.io/project2-251819/recipease', '.']
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy"]
 - name: 'gcr.io/cloud-builders/gke-deploy:stable'
