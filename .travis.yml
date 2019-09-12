@@ -17,12 +17,14 @@ after_success:
   - docker tag image gcr.io/project2-251819/github.com/image
   - gcloud docker -- push gcr.io/project2-251819/github.com/image
   - y | gcloud app deploy --project project2-251819
-  - gcloud config set compute/zone us-central1-a
-  - gcloud container clusters create app1
-  - gcloud container clusters get-credentials
-  - kubectl delete service app1  
-  - kubectl create deployment app1 --image=gcr.io/project2-251819/github.com/image@sha256:c8093b2b7dd3f72e50f6967d4f17677dcd1ba79c81d0ed3be0736092dd00acad
-  - kubectl expose deployment app1 --type LoadBalancer --port 80 --target-port 8080
+
+# I'm bad at listening but I think my groupmate said he got kubernetes working outside of travis and these travis scripts don't work for kubernetes
+#  - gcloud config set compute/zone us-central1-a
+#  - gcloud container clusters create app1
+#  - gcloud container clusters get-credentials
+#  - kubectl delete service app1  
+#  - kubectl create deployment app1 --image=gcr.io/project2-251819/github.com/image@sha256:c8093b2b7dd3f72e50f6967d4f17677dcd1ba79c81d0ed3be0736092dd00acad
+#  - kubectl expose deployment app1 --type LoadBalancer --port 80 --target-port 8080
 
 before_install:
 - chmod +x mvnw
