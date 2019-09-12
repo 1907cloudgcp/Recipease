@@ -9,7 +9,7 @@ spring:
     driverClassName: org.postgresql.Driver
     initilization-mode: never
     password: ${JDBC_PASSWORD}
-    username: ${JDBC_USERNAME}
+    username: abc
     url: jdbc:postgresql://34.70.51.191:5432/recipease
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
