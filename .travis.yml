@@ -13,7 +13,9 @@ after_success:
 #  - openssl enc -d -aes-256-cbc -in encrypted.data -out e.json -k password
   - gcloud auth activate-service-account --key-file e.json
 #  - cat aaa.json
-  - docker build -t image .
+#
+#  - docker build -t image .
+  - docker build -t image -f ./devops/Dockerfile --build-arg DATABASE_NAME=${DATABASE_NAME} --build-arg JDBC_SCHEMA=${JDBC_SCHEMA} --build-arg JDBC_URL=${JDBC_URL} --build-arg JDBC_USERNAME=${JDBC_USERNAME} --build-arg JDBC_PASSWORD=${JDBC_PASSWORD} .
   - docker tag image gcr.io/project2-251819/github.com/image
   - gcloud docker -- push gcr.io/project2-251819/github.com/image
   - y | gcloud app deploy --project project2-251819
