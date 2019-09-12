@@ -23,4 +23,4 @@ images: ['gcr.io/project2-251819/recipease']
 secrets:
 - kmsKeyName: 'projects/project-2-251819/locations/global/keyRings/gfy-keyring/cryptoKeys/gofundyoukey'
   secretEnv:
-    JDBC_PASSWORD: 'CiQAfvjyw1U7j1z+RYyVB9ifBKY0FAC6FotSCCNYvyIfJX08HuUSIQBN1LoZlwir1smW1/OBRuqj2bIAruOU7SI6a8ZcNV/Aw=='
+    JDBC_PASSWORD: 'CiQAfvjyw1U7j1z+RYyVB9ifBKY0FAC6FotSCCNYvyIfJX08HuUSIQBN1LoZlwir1smW1/OBRuq/j2bIAruOU7SI6a8ZcNV/Aw=='
