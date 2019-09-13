@@ -5,17 +5,17 @@ steps:
   secretEnv:
   - 'JDBC_PASSWORD'
   
-# building the docker image
+# building the docker image:
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args: ['-c', 'docker build -t gcr.io/project2-251819/recipease -f ./Dockerfile --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD .']
   secretEnv: ['JDBC_PASSWORD']
   
-# moving the build to bucket
+# moving the build to bucket:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'recipease', 'gs://credentials-recipease']
   
-# move data to bucker
+# move data to bucker:
 - name: 'gcr.io/cloud-builders/gcloud'
   args: [sql export sql recipease-sql gs://credentials-recipease/sqldumpfile.gz --database=recipease]
   
@@ -31,6 +31,7 @@ steps:
 timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
 
+# secrets:
 secrets:
 - kmsKeyName: 'projects/project2-251819/locations/global/keyRings/database/cryptoKeys/key'
   secretEnv:
