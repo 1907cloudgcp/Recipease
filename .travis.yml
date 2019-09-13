@@ -7,7 +7,7 @@ addons:
     packages:
       - oracle-java9-installer
 after_success:
-  - if: branch = master
+  - if: branch = staging
 #  - docker build -t gcr.io/project2-251819/github.com/1907cloudgcp/recipeasev1:0.0.1 .
   - docker-credential-gcr configure-docker
   - gsutil cp gs://credentials-recipease/jsonkey2.json e.json
