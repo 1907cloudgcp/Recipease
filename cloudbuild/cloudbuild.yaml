@@ -17,7 +17,7 @@ steps:
   
 # moving the build to bucket:
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', './target', 'gs://credentials-recipease']
+  args: ['cp', '-r', './target', 'gs://credentials-recipease']
   
 # move data to bucker:
 - name: 'gcr.io/cloud-builders/gcloud'
