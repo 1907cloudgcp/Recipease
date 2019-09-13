@@ -20,7 +20,7 @@ after_success:
   - docker build -t image -f ./devops/Dockerfile --build-arg DATABASE_NAME=${DATABASE_NAME} --build-arg JDBC_SCHEMA=${JDBC_SCHEMA} --build-arg JDBC_URL=${JDBC_URL} --build-arg JDBC_USERNAME=${JDBC_USERNAME} --build-arg JDBC_PASSWORD=${JDBC_PASSWORD} .
   - docker tag image gcr.io/project2-251819/github.com/image
   - gcloud docker -- push gcr.io/project2-251819/github.com/image
- - y | gcloud app deploy --project project2-251819
+  - y | gcloud app deploy --project project2-251819
 
 # I'm bad at listening but I think my groupmate said he got kubernetes working outside of travis and these travis scripts don't work for kubernetes
 #  - gcloud config set compute/zone us-central1-a
