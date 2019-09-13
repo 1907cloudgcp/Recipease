@@ -17,11 +17,11 @@ steps:
   
 # moving the build to bucket:
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gcr.io/project2-251819/recipease', 'gs://credentials-recipease/dr_recipease']
+  args: ['cp', '-r', './target', 'gs://credentials-recipease/dr_recipease']
   
-# move data to bucker:
+# move data to bucket:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: [sql export sql recipease-sql gs://credentials-recipease/sqldumpfile.gz --database=recipease]
+  args: ['sql', 'export', 'sql', 'recipease-sql', 'gs://credentials-recipease/sqldumpfile.gz', '--database=recipease']
   
 #- name: "gcr.io/cloud-builders/gcloud"
  # args: ["app", "deploy"]
