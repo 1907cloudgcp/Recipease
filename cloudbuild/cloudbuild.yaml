@@ -1,7 +1,27 @@
 steps:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['install']
-  env: ['DATABASE_NAME=recipease','JDBC_PASSWORD=123','JDBC_SCHEMA=recipease','JDBC_URL=34.70.51.191','JDBC_USERNAME=abc']
+  secretEnv:
+  - 'JDBC_PASSWORD'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--tag=gcr.io/project2-251819/recipease', '.']
+  entrypoint: 'bash'
+  args: ['-c', 'docker build -t gcr.io/project2-251819/recipease -f ./Dockerfile --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD .']
+  secretEnv: ['JDBC_PASSWORD']
+ 
+#- name: "gcr.io/cloud-builders/gcloud"
+ # args: ["app", "deploy"]
+- name: 'gcr.io/cloud-builders/gke-deploy:stable'
+  args:
+  - 'run'
+  - '--image=gcr.io/project2-251819/recipease'
+  - '--location=us-central1-c'
+  - '--cluster=hello-java-cluster'
+  - '--expose=8080'
+timeout: "1600s"
 images: ['gcr.io/project2-251819/recipease']
+
+secrets:
+- kmsKeyName: 'projects/project2-251819/locations/global/keyRings/database/cryptoKeys/key'
+  secretEnv:
+    JDBC_PASSWORD: 'CiQAfvjyw1RzjLHoeUW93k/8iJV9iYnZXD4GqsIYvc2Mc8js1rgSIQBN1LoZmYCPQIAbKc1JEgWO/F09Gwl4lFcm+3SoD9bsmQ=='
+    

@@ -8,7 +8,7 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     initilization-mode: never
-    password: 123
+    password: abc
     username: abc
     url: jdbc:postgresql://34.70.51.191:5432/recipease
   jpa:
