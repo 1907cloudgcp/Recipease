@@ -21,7 +21,7 @@ steps:
   
 # move data to bucker:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['sql', 'export', 'sql', 'recipease-sql', 'gs://credentials-recipease/sqldumpfile.gz', '--database=recipease']
+  args: ['sql', 'export', 'sql', 'recipease-sql', 'gs://credentials-recipease/', '--database=recipease']
   
 #- name: "gcr.io/cloud-builders/gcloud"
  # args: ["app", "deploy"]
