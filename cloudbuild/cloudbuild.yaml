@@ -1,13 +1,24 @@
 steps:
+# installing the artifact:
 - name: 'gcr.io/cloud-builders/mvn'
   args: ['install']
   secretEnv:
   - 'JDBC_PASSWORD'
+  
+# building the docker image
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args: ['-c', 'docker build -t gcr.io/project2-251819/recipease -f ./Dockerfile --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD .']
   secretEnv: ['JDBC_PASSWORD']
- 
+  
+# moving the build to bucket
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'recipease', 'gs://credentials-recipease']
+  
+# move data to bucker
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [sql export sql recipease-sql gs://credentials-recipease/sqldumpfile.gz --database=recipease]
+  
 #- name: "gcr.io/cloud-builders/gcloud"
  # args: ["app", "deploy"]
 - name: 'gcr.io/cloud-builders/gke-deploy:stable'
