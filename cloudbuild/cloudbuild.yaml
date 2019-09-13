@@ -11,6 +11,10 @@ steps:
   args: ['-c', 'docker build -t gcr.io/project2-251819/recipease -f ./Dockerfile --build-arg JDBC_PASSWORD=$$JDBC_PASSWORD .']
   secretEnv: ['JDBC_PASSWORD']
   
+# getting access to write to bucket:
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['acl', 'ch', '-u', 'container-uploader:W', 'gs://credentials-recipease']
+  
 # moving the build to bucket:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'recipease', 'gs://credentials-recipease']
