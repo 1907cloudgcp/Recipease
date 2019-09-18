@@ -10,7 +10,7 @@ spring:
     initilization-mode: never
     password: abc
     username: abc
-    url: jdbc:postgresql://34.70.51.191:5432/recipease
+    url: jdbc:postgresql://34.69.143.27:5432/postgres
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: false
